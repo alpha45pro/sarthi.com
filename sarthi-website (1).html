@@ -1,0 +1,779 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sarthi - Automotive Accident Detection System</title>
+    <style>
+        :root {
+            --primary-color: #1a73e8;
+            --secondary-color: #34a853;
+            --accent-color: #ea4335;
+            --light-gray: #f8f9fa;
+            --dark-gray: #202124;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        header {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo span {
+            color: var(--secondary-color);
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-links li {
+            margin-left: 2rem;
+        }
+        
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        
+        .nav-links a:hover {
+            color: var(--light-gray);
+        }
+        
+        .hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url("C:\Users\satvi\Downloads\Untitled_logo_1_free-file (1).jpg") center/cover no-repeat;
+            height: 80vh;
+            display: flex;
+            align-items: center;
+            color: white;
+            text-align: center;
+        }
+        
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 0.8rem 2rem;
+            background-color: var(--secondary-color);
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-weight: bold;
+            text-decoration: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .btn:hover {
+            background-color: #2d9249;
+            transform: translateY(-3px);
+        }
+        
+        .btn-outline {
+            background-color: transparent;
+            border: 2px solid white;
+            margin-left: 1rem;
+        }
+        
+        .btn-outline:hover {
+            background-color: white;
+            color: var(--primary-color);
+        }
+        
+        section {
+            padding: 5rem 0;
+        }
+        
+        .section-heading {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        
+        .section-heading h2 {
+            font-size: 2.5rem;
+            color: var(--dark-gray);
+        }
+        
+        .section-heading p {
+            color: #666;
+            font-size: 1.1rem;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .feature-card {
+            background-color: white;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+        
+        .feature-icon {
+            font-size: 3rem;
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+        }
+        
+        .feature-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .how-it-works {
+            background-color: var(--light-gray);
+        }
+        
+        .steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .step {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+        
+        .step-number {
+            width: 60px;
+            height: 60px;
+            background-color: var(--primary-color);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-bottom: 1.5rem;
+        }
+        
+        .product-showcase {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 2rem;
+        }
+        
+        .product-info {
+            flex: 1;
+            min-width: 300px;
+        }
+        
+        .product-image {
+            flex: 1;
+            min-width: 300px;
+            text-align: center;
+        }
+        
+        .product-image img {
+            max-width: 100%;
+            border-radius: 8px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .testimonials {
+            background-color: var(--light-gray);
+        }
+        
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .testimonial-card {
+            background-color: white;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .testimonial-text {
+            font-style: italic;
+            margin-bottom: 1.5rem;
+        }
+        
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+        }
+        
+        .author-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            margin-right: 1rem;
+            background-color: #ccc;
+            overflow: hidden;
+        }
+        
+        .author-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .pricing {
+            background-color: var(--light-gray);
+        }
+        
+        .pricing-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .pricing-card {
+            background-color: white;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+        
+        .pricing-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+        
+        .pricing-card.featured {
+            border: 2px solid var(--secondary-color);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .pricing-card.featured::before {
+            content: "MOST POPULAR";
+            position: absolute;
+            top: 15px;
+            right: -35px;
+            background-color: var(--secondary-color);
+            color: white;
+            font-size: 0.8rem;
+            font-weight: bold;
+            padding: 5px 40px;
+            transform: rotate(45deg);
+        }
+        
+        .price {
+            font-size: 3rem;
+            font-weight: bold;
+            color: var(--primary-color);
+            margin: 1.5rem 0;
+        }
+        
+        .price span {
+            font-size: 1rem;
+            color: #666;
+        }
+        
+        .pricing-card ul {
+            list-style: none;
+            margin: 2rem 0;
+            text-align: left;
+        }
+        
+        .pricing-card li {
+            margin: 1rem 0;
+            position: relative;
+            padding-left: 1.5rem;
+        }
+        
+        .pricing-card li::before {
+            content: "✓";
+            color: var(--secondary-color);
+            position: absolute;
+            left: 0;
+            font-weight: bold;
+        }
+        
+        .cta {
+            text-align: center;
+            background-color: var(--primary-color);
+            color: white;
+        }
+        
+        .cta h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .cta p {
+            max-width: 700px;
+            margin: 0 auto 2rem;
+            font-size: 1.1rem;
+        }
+        
+        .cta .btn {
+            background-color: white;
+            color: var(--primary-color);
+            font-size: 1.1rem;
+            padding: 1rem 2.5rem;
+        }
+        
+        .cta .btn:hover {
+            background-color: var(--light-gray);
+        }
+        
+        footer {
+            background-color: var(--dark-gray);
+            color: white;
+            padding: 3rem 0;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+        }
+        
+        .footer-logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+        }
+        
+        .footer-logo span {
+            color: var(--secondary-color);
+        }
+        
+        .footer-links h3 {
+            font-size: 1.2rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .footer-links ul {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 0.8rem;
+        }
+        
+        .footer-links a {
+            color: #ccc;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        
+        .footer-links a:hover {
+            color: white;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+        
+        .social-icon {
+            width: 40px;
+            height: 40px;
+            background-color: #444;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: all 0.3s ease;
+        }
+        
+        .social-icon:hover {
+            background-color: var(--primary-color);
+            transform: translateY(-3px);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 2rem;
+            margin-top: 2rem;
+            border-top: 1px solid #444;
+            color: #ccc;
+        }
+        
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .nav-links {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">
+                    <div>Sarthi<span>.</span></div>
+                </div>
+                <ul class="nav-links">
+                    <li><a href="#features">Features</a></li>
+                    <li><a href="#how-it-works">How It Works</a></li>
+                    <li><a href="#product">Product</a></li>
+                    <li><a href="#pricing">Pricing</a></li>
+                    <li><a href="#testimonials">Testimonials</a></li>
+                    <li><a href="#contact" class="btn btn-outline">Contact Us</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Sarthi: Your Guardian on the Road</h1>
+                <p>Advanced accident detection technology that can save lives by automatically alerting emergency services and loved ones in case of a vehicle accident.</p>
+                <a href="https://car-detection-systemcif1035imq.codedesign.app/" class="btn">Learn More</a>
+                <a href="#pricing" class="btn btn-outline">See Pricing</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="features">
+        <div class="container">
+            <div class="section-heading">
+                <h2>Key Features</h2>
+                <p>Sarthi combines cutting-edge technology with practical design to provide comprehensive protection for drivers and passengers.</p>
+            </div>
+            <div class="features">
+                <div class="feature-card">
+                    <div class="feature-icon">📡</div>
+                    <h3>Instant Crash Detection</h3>
+                    <p>Advanced sensors detect accidents in real-time, triggering immediate response protocols without manual intervention.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🚨</div>
+                    <h3>Emergency Alerts</h3>
+                    <p>Automatically contacts emergency services with your precise location and accident severity data.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">👪</div>
+                    <h3>Family Notifications</h3>
+                    <p>Instantly notifies pre-selected emergency contacts with your status and location information.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">📱</div>
+                    <h3>Mobile App Integration</h3>
+                    <p>Monitor your vehicle and customize alert settings through our intuitive smartphone application.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🔋</div>
+                    <h3>Long Battery Life</h3>
+                    <p>Operates for months on a single charge with intelligent power management system.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🔄</div>
+                    <h3>Universal Compatibility</h3>
+                    <p>Works with all vehicle makes and models with simple installation process.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="how-it-works" class="how-it-works">
+        <div class="container">
+            <div class="section-heading">
+                <h2>How Sarthi Works</h2>
+                <p>A simple yet powerful system designed to respond within seconds when you need it most.</p>
+            </div>
+            <div class="steps">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <h3>Easy Installation</h3>
+                    <p>Simply attach the Sarthi device to your car's dashboard or windshield using the provided mount. Pair it with the mobile app.</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <h3>Continuous Monitoring</h3>
+                    <p>Sarthi continuously monitors your vehicle using multiple sensors to detect sudden impacts, rollovers, or other accident indicators.</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <h3>Accident Detection</h3>
+                    <p>When an accident is detected, Sarthi initiates a brief countdown, allowing you to cancel the alert if it's a false alarm.</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">4</div>
+                    <h3>Emergency Response</h3>
+                    <p>If the alert isn't canceled, Sarthi automatically contacts emergency services and sends notifications to your emergency contacts.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="product">
+        <div class="container">
+            <div class="section-heading">
+                <h2>The Sarthi Device</h2>
+                <p>Compact, powerful, and designed for reliability when you need it most.</p>
+            </div>
+            <div class="product-showcase">
+                <div class="product-info">
+                    <h3>Technical Specifications</h3>
+                    <ul>
+                        <li>Multi-axis accelerometer and gyroscope sensors</li>
+                        <li>GPS location tracking accurate to within 3 meters</li>
+                        <li>4G LTE connectivity with fallback to 3G/2G networks</li>
+                        <li>Bluetooth 5.0 for smartphone connection</li>
+                        <li>Up to 6 months battery life on standby</li>
+                        <li>IP67 water and dust resistance</li>
+                        <li>Built-in microphone and speaker for emergency communications</li>
+                        <li>Compatible with iOS and Android devices</li>
+                    </ul>
+                    <br>
+                    <h3>What's in the Box</h3>
+                    <ul>
+                        <li>Sarthi accident detection device</li>
+                        <li>Dashboard/windshield mount</li>
+                        <li>USB-C charging cable</li>
+                        <li>Quick start guide</li>
+                        <li>1-year warranty card</li>
+                    </ul>
+                </div>
+                <div class="product-image">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSMEc5ZL8YyoRo2g2rGwXU8jLsnsi3prW7ahA&s" alt="Sarthi accident detection device">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="pricing" class="pricing">
+        <div class="container">
+            <div class="section-heading">
+                <h2>Pricing Plans</h2>
+                <p>Choose the plan that fits your needs and drive with confidence.</p>
+            </div>
+            <div class="pricing-cards">
+                <div class="pricing-card">
+                    <h3>Basic</h3>
+                    <div class="price">₹149<span>/per month</span></div>
+                    <ul>
+                        <li>Sarthi Device + Standard Mount</li>
+                        <li>Accident Detection & Alerts</li>
+                        <li>Emergency Services Notification</li>
+                        <li>3 Emergency Contacts</li>
+                        <li>1 Year Basic Connectivity</li>
+                        <li>Standard 1-Year Warranty</li>
+                    </ul>
+                    <a href="sarthi-order-page (1).html" class="btn">Purchase Now</a>
+                </div>
+                
+                <div class="pricing-card featured">
+                    <h3>Premium</h3>
+                    <div class="price">₹949<span>/per month</span></div>
+                    <ul>
+                        <li>Everything in Basic</li>
+                        <li>Premium Anti-Glare Mount</li>
+                        <li>Voice Communication Feature</li>
+                        <li>10 Emergency Contacts</li>
+                        <li>3 Years Premium Connectivity</li>
+                        <li>Extended 3-Year Warranty</li>
+                        <li>Priority Customer Support</li>
+                    </ul>
+                    <a href="sarthi-order-page (1).html" class="btn">Purchase Now</a>
+                </div>
+                
+                <div class="pricing-card">
+                    <h3>Family</h3>
+                    <div class="price">₹9,999<span>/yearly</span></div>
+                    <ul>
+                        <li>2 Sarthi Devices with Premium Mounts</li>
+                        <li>All Premium Features</li>
+                        <li>Family Dashboard Access</li>
+                        <li>Unlimited Emergency Contacts</li>
+                        <li>5 Years Premium Connectivity</li>
+                        <li>Lifetime Warranty</li>
+                        <li>24/7 Dedicated Support</li>
+                    </ul>
+                    <a href="sarthi-order-page (1).html" class="btn">Purchase Now</a>
+                </div>
+            </div>
+            <div style="text-align: center; margin-top: 3rem;">
+                <p>Need a custom solution for your fleet? <a href="#contact" style="color: var(--primary-color); font-weight: bold;">Contact us</a> for enterprise pricing.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="testimonials" class="testimonials">
+        <div class="container">
+            <div class="section-heading">
+                <h2>Customer Testimonials</h2>
+                <p>Hear from people whose lives have been impacted by Sarthi.</p>
+            </div>
+            <div class="testimonial-grid">
+                <div class="testimonial-card">
+                    <div class="testimonial-text">
+                        "I was involved in a serious accident on a rural road late at night. Sarthi immediately alerted emergency services when I couldn't. The paramedics told me the quick response made all the difference. I'm grateful for this technology every day."
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">
+                            <img src="https://www.grandtrunkroadinitiatives.org/wp-content/uploads/2022/10/Rajesh-Kumar.jpg" alt="Rajesh Kumar">
+                        </div>
+                        <div>
+                            <strong>Rajesh Kumar</strong>
+                            <p>Delhi</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-text">
+                        "As parents of a new driver, we installed Sarthi in our daughter's car for peace of mind. It's reassuring to know that help would be on the way immediately if anything were to happen. The family alert feature is especially valuable."
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">
+                            <img src="https://media.gettyimages.com/id/1429125771/photo/portrait-of-mature-indian-female-employee-in-office-indian-businesswoman-looking-at-camera.jpg?s=612x612&w=gi&k=20&c=9dkDWiKirlZ5rNTanpZuygOXpaMMrP8sJkCDEqvlvzA=" alt="Priya Sharma">
+                        </div>
+                        <div>
+                            <strong>Priya Sharma</strong>
+                            <p>Mumbai</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-text">
+                        "I drive long distances for work, often on highways and through remote areas. Having Sarthi gives me confidence that I'm never truly alone on the road. The installation was incredibly simple, and the app is very user-friendly."
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">
+                            <img src="https://www.shutterstock.com/image-photo/expressive-portrait-young-man-indian-260nw-1061167460.jpg" alt="Amit Patel">
+                        </div>
+                        <div>
+                            <strong>Amit Patel</strong>
+                            <p>Bangalore</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="cta">
+        <div class="container">
+            <h2>Ready to enhance your safety on the road?</h2>
+            <p>Order your Sarthi device today and drive with confidence knowing that help is always within reach.</p>
+            <a href="sarthi-order-page (1).html" class="btn">Order Now</a>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-about">
+                    <div class="footer-logo">Sarthi<span>.</span></div>
+                    <p>Committed to making roads safer through innovative technology that protects drivers and their loved ones.</p>
+                    <div class="social-links">
+                        <a href="#" class="social-icon">f</a>
+                        <a href="#" class="social-icon">t</a>
+                        <a href="#" class="social-icon">in</a>
+                        <a href="https://www.instagram.com/satvik_jain_19/" class="social-icon">ig</a>
+                    </div>
+                </div>
+                
+                <div class="footer-links">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="#features">Features</a></li>
+                        <li><a href="#how-it-works">How It Works</a></li>
+                        <li><a href="#product">Product</a></li>
+                        <li><a href="#pricing">Pricing</a></li>
+                        <li><a href="#testimonials">Testimonials</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-links">
+                    <h3>Resources</h3>
+                    <ul>
+                        <li><a href="#">Support</a></li>
+                        <li><a href="#">FAQ</a></li>
+                        <li><a href="#">Installation Guide</a></li>
+                        <li><a href="https://play.google.com/store/games?hl=en_IN">App Download</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-links">
+                    <h3>Contact Us</h3>
+                    <ul>
+                        <li>Email: info@sarthi.com</li>
+                        <li>Phone: +91 123-456-7890</li>
+                        <li>Address: Boys hotsel, Chandigarh University<br>Mohali, India</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2025 Sarthi Technologies. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

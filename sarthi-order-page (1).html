@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sarthi - Car Safety System - Order Now</title>
+    <style>
+        :root {
+            --primary: #1a73e8;
+            --primary-dark: #0d47a1;
+            --secondary: #34a853;
+            --light: #f8f9fa;
+            --dark: #202124;
+            --danger: #ea4335;
+            --warning: #fbbc05;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f8f9fa;
+            color: #202124;
+            line-height: 1.6;
+        }
+        
+        header {
+            background-color: var(--primary);
+            color: white;
+            padding: 1rem 0;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: white;
+            text-decoration: none;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+        
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        
+        .nav-links a:hover {
+            opacity: 0.8;
+        }
+        
+        .hero {
+            background-color: var(--primary);
+            color: white;
+            padding: 4rem 0;
+            text-align: center;
+        }
+        
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto 2rem;
+        }
+        
+        .features {
+            padding: 3rem 0;
+            background-color: white;
+        }
+        
+        .features h2 {
+            text-align: center;
+            margin-bottom: 2rem;
+            color: var(--primary-dark);
+        }
+        
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+        
+        .feature-card {
+            background-color: var(--light);
+            border-radius: 8px;
+            padding: 1.5rem;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .feature-card h3 {
+            color: var(--primary-dark);
+            margin-bottom: 1rem;
+        }
+        
+        .order-section {
+            padding: 3rem 0;
+            background-color: var(--light);
+        }
+        
+        .order-section h2 {
+            text-align: center;
+            margin-bottom: 2rem;
+            color: var(--primary-dark);
+        }
+        
+        .order-form {
+            background-color: white;
+            border-radius: 8px;
+            padding: 2rem;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            max-width: 800px;
+            margin: 0 auto;
+            scroll-margin-top: 2rem;
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+        
+        input, select, textarea {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 1rem;
+        }
+        
+        input:focus, select:focus, textarea:focus {
+            outline: none;
+            border-color: var(--primary);
+        }
+        
+        .button {
+            display: inline-block;
+            background-color: var(--primary);
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: 4px;
+            font-size: 1rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            text-decoration: none;
+        }
+        
+        .button:hover {
+            background-color: var(--primary-dark);
+        }
+        
+        footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+        }
+        
+        @media screen and (max-width: 768px) {
+            .nav-links {
+                gap: 1rem;
+            }
+            
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .hero p {
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav class="navbar">
+                <a href="#" class="logo">SARTHI</a>
+                <ul class="nav-links">
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#features">Features</a></li>
+                    <li><a href="#order-form">Order Now</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <h1>Advanced Car Safety System</h1>
+            <p>Sarthi monitors driver behavior, detects accidents, tracks speed, and provides real-time location data to keep you and your loved ones safe on the road.</p>
+            <a href="#order-form" class="button">Order Now</a>
+        </div>
+    </section>
+
+    <section class="features" id="features">
+        <div class="container">
+            <h2>Key Features</h2>
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <h3>Accident Detection</h3>
+                    <p>Advanced sensors detect collisions and automatically alert emergency services with your exact location.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>Driver Behavior Monitoring</h3>
+                    <p>AI-powered system monitors driving patterns to identify dangerous behaviors and provide real-time feedback.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>Speed Tracking</h3>
+                    <p>Continuous speed monitoring with alerts when exceeding limits to encourage safer driving habits.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>Location Tracking</h3>
+                    <p>GPS-enabled real-time location tracking accessible through our mobile app for peace of mind.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="order-section" id="order">
+        <div class="container">
+            <div class="order-form" id="order-form">
+                <h2>Order Now</h2>
+                <form id="sarthiOrderForm">
+                    <div class="form-group">
+                        <label for="name">Full Name*</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email Address*</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="mobile">Mobile Number*</label>
+                        <input type="tel" id="mobile" name="mobile" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="address">Complete Address*</label>
+                        <textarea id="address" name="address" rows="3" required></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="city">City*</label>
+                        <input type="text" id="city" name="city" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="state">State*</label>
+                        <input type="text" id="state" name="state" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="pincode">Pincode*</label>
+                        <input type="text" id="pincode" name="pincode" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="plan">Select Plan*</label>
+                        <select id="plan" name="plan" required>
+                            <option value="">-- Select a Plan --</option>
+                            <option value="Basic">Basic - ₹4,999</option>
+                            <option value="Premium">Premium - ₹8,999</option>
+                            <option value="Enterprise">Enterprise - ₹12,999</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="cars">Number of Cars</label>
+                        <input type="number" id="cars" name="cars" min="1" value="1">
+                    </div>
+                    <div class="form-group">
+                        <label for="notes">Additional Notes</label>
+                        <textarea id="notes" name="notes" rows="3"></textarea>
+                    </div>
+                    <button type="submit" class="button">Submit Order</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Sarthi Car Safety Systems. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        function selectPlan(plan) {
+            document.getElementById('plan').value = plan;
+            // Scroll to the form section
+            document.getElementById('order-form').scrollIntoView({behavior: 'smooth'});
+        }
+        
+        // Add smooth scrolling to all links pointing to the form
+        document.addEventListener('DOMContentLoaded', function() {
+            const orderLinks = document.querySelectorAll('a[href="#order-form"]');
+            
+            orderLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    document.getElementById('order-form').scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                });
+            });
+            
+            // Handle form submission
+            document.getElementById('sarthiOrderForm').addEventListener('submit', function(e) {
+                e.preventDefault();
+                alert('Thank you for your order! We will contact you shortly to confirm your Sarthi system installation.');
+                // In a real implementation, you would send the form data to a server here
+            });
+        });
+    </script>
+</body>
+</html>
